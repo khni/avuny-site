@@ -1,67 +1,121 @@
-# Payload Blank Template
+Here’s a refactored **README.md** tailored for the **Avuny website**, removing references to Payload CMS and making it specific to your site:
 
-This template comes configured with the bare minimum to get started on anything you need.
+---
 
-## Quick start
+# Avuny Website
 
-This template can be deployed directly from our Cloud hosting and it will setup MongoDB and cloud S3 object storage for media.
+This repository contains the source code for the **Avuny** website, designed to showcase our brand, services, and offerings with a modern, responsive, and SEO-friendly interface.
 
-## Quick Start - local setup
+## Quick Start
 
-To spin up this template locally, follow these steps:
+You can run this website locally for development or deploy it directly to production using Vercel, Netlify, or any hosting platform that supports Next.js.
 
-### Clone
+### Local Setup
 
-After you click the `Deploy` button above, you'll want to have standalone copy of this repo on your machine. If you've already cloned this repo, skip to [Development](#development).
+To spin up the Avuny website locally, follow these steps:
 
-### Development
+#### Clone the Repository
 
-1. First [clone the repo](#clone) if you have not done so already
-2. `cd my-project && cp .env.example .env` to copy the example environment variables. You'll need to add the `MONGODB_URL` from your Cloud project to your `.env` if you want to use S3 storage and the MongoDB database that was created for you.
+```bash
+git clone https://github.com/yourusername/avuny-site.git
+cd avuny-site
+```
 
-3. `pnpm install && pnpm dev` to install dependencies and start the dev server
-4. open `http://localhost:3000` to open the app in your browser
+#### Install Dependencies
 
-That's it! Changes made in `./src` will be reflected in your app. Follow the on-screen instructions to login and create your first admin user. Then check out [Production](#production) once you're ready to build and serve your app, and [Deployment](#deployment) when you're ready to go live.
+```bash
+npm install
+# or
+yarn install
+```
 
-#### Docker (Optional)
+#### Environment Variables
 
-If you prefer to use Docker for local development instead of a local MongoDB instance, the provided docker-compose.yml file can be used.
+Copy the example environment file:
 
-To do so, follow these steps:
+```bash
+cp .env.example .env
+```
 
-- Modify the `MONGODB_URL` in your `.env` file to `mongodb://127.0.0.1/<dbname>`
-- Modify the `docker-compose.yml` file's `MONGODB_URL` to match the above `<dbname>`
-- Run `docker-compose up` to start the database, optionally pass `-d` to run in the background.
+Add any required environment variables such as API keys or analytics IDs in the `.env` file.
 
-## How it works
+#### Start the Development Server
 
-The Payload config is tailored specifically to the needs of most websites. It is pre-configured in the following ways:
+```bash
+npm run dev
+# or
+yarn dev
+```
 
-### Collections
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the site.
 
-See the [Collections](https://payloadcms.com/docs/configuration/collections) docs for details on how to extend this functionality.
+Changes made in the `./src` folder will be reflected immediately thanks to hot-reloading.
 
-- #### Users (Authentication)
+### Docker (Optional)
 
-  Users are auth-enabled collections that have access to the admin panel.
+If you prefer to use Docker for development:
 
-  For additional help, see the official [Auth Example](https://github.com/payloadcms/payload/tree/main/examples/auth) or the [Authentication](https://payloadcms.com/docs/authentication/overview#authentication-overview) docs.
+1. Ensure Docker is installed on your machine.
+2. Build and run the container:
 
-- #### Media
+```bash
+docker-compose up --build
+```
 
-  This is the uploads enabled collection. It features pre-configured sizes, focal point and manual resizing to help you manage your pictures.
+3. The website will be available at [http://localhost:3000](http://localhost:3000).
 
-### Docker
+Docker standardizes the development environment and can be helpful if working across multiple systems.
 
-Alternatively, you can use [Docker](https://www.docker.com) to spin up this template locally. To do so, follow these steps:
+## How It Works
 
-1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
-1. Next run `docker-compose up`
-1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
+The Avuny website is built with **Next.js** and **TypeScript** and uses **Tailwind CSS** for styling.
 
-That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
+### Key Features
+
+- **Responsive Design:** Works on desktop, tablet, and mobile
+- **SEO Optimized:** Uses `next-seo` for better search engine visibility
+- **Animations:** Smooth UI animations with `framer-motion`
+- **Image Optimization:** Automatic optimization of images for faster load times
+- **Single-page Layout:** Clean, modern, multi-section landing page design
+
+### Folder Structure
+
+```
+avuny-site/
+├─ public/             # Static assets like images and fonts
+├─ src/
+│  ├─ components/      # Reusable React components
+│  ├─ pages/           # Next.js pages
+│  ├─ styles/          # Tailwind and custom CSS
+│  └─ utils/           # Utility functions
+├─ .env.example
+├─ package.json
+└─ README.md
+```
+
+## Deployment
+
+You can deploy the site to **Vercel** or **Netlify** directly from this repository. Example with Vercel:
+
+```bash
+vercel deploy
+```
+
+Follow the on-screen instructions to connect your repository and deploy.
+
+## Contributing
+
+We welcome contributions to improve the Avuny website:
+
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature-name`)
+3. Make your changes
+4. Commit your changes (`git commit -m "Add feature"`)
+5. Push to the branch (`git push origin feature-name`)
+6. Open a Pull Request
 
 ## Questions
 
-If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
+If you have any questions or need help, reach out via email or open an issue in this repository.
+
+---
