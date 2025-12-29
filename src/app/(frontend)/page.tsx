@@ -6,6 +6,8 @@ import { fileURLToPath } from 'url'
 
 import config from '@/payload.config'
 import './styles.css'
+import { ModeToggle } from '@/components/settings/mode-toggle'
+import LanguageSwitcher from '@/components/settings/langauge-switcher'
 
 export default async function HomePage() {
   const headers = await getHeaders()
@@ -27,6 +29,8 @@ export default async function HomePage() {
             width={65}
           />
         </picture>
+        <ModeToggle />
+        <LanguageSwitcher />
         {!user && <h1>Welcome to your new project.</h1>}
         {user && <h1>Welcome back, {user.email}</h1>}
 

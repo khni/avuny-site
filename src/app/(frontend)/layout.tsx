@@ -1,18 +1,48 @@
 import React from 'react'
 import './styles.css'
 
-export const metadata = {
-  description: 'A blank template using Payload in a Next.js app.',
-  title: 'Payload Blank Template',
-}
+import { Cairo, Geist, Geist_Mono, Roboto } from 'next/font/google'
 
-export default async function RootLayout(props: { children: React.ReactNode }) {
-  const { children } = props
+import { Providers } from '@/providers'
+import LocaleProvider from '@/providers/locale-provider'
+
+import { getLocale } from 'next-intl/server'
+
+const fontSans = Geist({
+  subsets: ['latin'],
+  variable: '--font-sans',
+})
+
+const fontMono = Geist_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+})
+
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-roboto',
+})
+const cairo = Cairo({
+  subsets: ['arabic'],
+  weight: ['400', '700'],
+  variable: '--font-cairo',
+})
+export default async function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  const locale = await getLocale()
+  const dir = locale === 'ar' ? 'rtl' : 'ltr'
+  const fontClassName = locale === 'ar' ? cairo.variable : roboto.variable
 
   return (
-    <html lang="en">
-      <body>
-        <main>{children}</main>
+    <html lang={locale} dir={dir} className={fontClassName} suppressHydrationWarning>
+      <body className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased `}>
+        <Providers dir={dir}>
+          <LocaleProvider>{children}</LocaleProvider>
+        </Providers>
       </body>
     </html>
   )
