@@ -25,7 +25,7 @@ export function Providers({ children, dir }: { children: React.ReactNode; dir: '
         <UserPreferencesContextProvider>
           <QueryClientProvider client={client}>
             <Direction.Provider dir={dir}>{children}</Direction.Provider>
-            <Toaster />
+            <Toaster richColors />
           </QueryClientProvider>
         </UserPreferencesContextProvider>
       </CookiesProvider>

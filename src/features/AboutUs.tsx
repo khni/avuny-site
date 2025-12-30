@@ -500,7 +500,11 @@ const AboutUs: React.FC<AboutUsProps> = ({
   )
 
   return (
-    <section ref={containerRef} className={`py-16 md:py-24 px-4 md:px-8 lg:px-16 ${className}`}>
+    <section
+      id="about"
+      ref={containerRef}
+      className={`py-16 md:py-24 px-4 md:px-8 lg:px-16 ${className}`}
+    >
       <div className="max-w-7xl mx-auto">
         {/* Hero Section */}
         <motion.div

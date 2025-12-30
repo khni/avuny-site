@@ -2,17 +2,24 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { ModeToggle } from '@/components/settings/mode-toggle'
+import { Link } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 export default function Navbar({
   links,
+  logo,
+  currentPath,
 }: {
   links: {
     name: string
     href: string
   }[]
+  logo: React.ReactNode
+  currentPath?: string
 }) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const MotionLink = motion(Link)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -33,10 +40,39 @@ export default function Navbar({
       <div className="mx-auto max-w-7xl px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <span className="text-sm font-semibold text-foreground">Avuny</span>
+          {logo}
 
           {/* Desktop */}
           <div className="hidden md:flex items-center gap-8">
+            {/* {links.map((link) => {
+              const isActive = currentPath === link.href
+
+              return (
+                <motion.a
+                  key={link.name}
+                  href={link.href}
+                  whileHover="hover"
+                  className={cn(
+                    'relative text-sm font-medium px-3 py-1 rounded-md transition-colors',
+                    isActive
+                      ? 'bg-muted text-foreground'
+                      : 'text-muted-foreground hover:text-foreground',
+                  )
+                }
+                >
+                  {link.name}
+
+                  <motion.span
+                    variants={{ hover: { width: '100%' } }}
+                    transition={{ duration: 0.25 }}
+                    className={cn(
+                      'absolute -bottom-1 left-0 h-[2px]',
+                      isActive ? 'w-full bg-primary' : 'w-0 bg-primary',
+                    )}
+                  />
+                </motion.a>
+              )
+            })} */}
             {links.map((link) => (
               <motion.a
                 key={link.name}
@@ -52,12 +88,11 @@ export default function Navbar({
                 />
               </motion.a>
             ))}
-
             <ModeToggle />
 
-            <button className="rounded-full bg-primary px-4 py-2 text-sm text-primary-foreground hover:opacity-90 transition">
+            {/* <button className="rounded-full bg-primary px-4 py-2 text-sm text-primary-foreground hover:opacity-90 transition">
               Get Started
-            </button>
+            </button> */}
           </div>
 
           {/* Mobile */}
@@ -91,9 +126,9 @@ export default function Navbar({
                   {link.name}
                 </a>
               ))}
-              <button className="rounded-full bg-primary px-4 py-2 text-sm text-primary-foreground">
+              {/* <button className="rounded-full bg-primary px-4 py-2 text-sm text-primary-foreground">
                 Get Started
-              </button>
+              </button> */}
             </div>
           </motion.div>
         )}
