@@ -2,6 +2,7 @@ import { Footer } from '@/components/Footer'
 import { links } from '@/features/links'
 
 export const AvunyFooter = () => {
+  const year = new Date().getFullYear()
   return (
     <Footer
       brand={{
@@ -28,12 +29,12 @@ export const AvunyFooter = () => {
         },
       ]}
       contact={{
-        phone: '+2 72 72 75 75',
+        phone: '+2 012 72 72 75 75',
         email: 'khaledeskandrany@gmail.com',
         timezone: '',
       }}
       bottom={{
-        copyright: '© 2025 Avuny.com',
+        copyright: ` © ${year} Avuny.com. All rights reserved.`,
         links: [
           //   { name: 'Terms', href: '/terms' },
           //   { name: 'Privacy', href: '/privacy' },
